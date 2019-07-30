@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.12.5/android/cloud_firestore.iml" filepath="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.12.5/android/cloud_firestore.iml" />
+      <module fileurl="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.11.1+6/android/firebase_auth.iml" filepath="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.11.1+6/android/firebase_auth.iml" />
+      <module fileurl="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.0+3/android/firebase_core.iml" filepath="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.0+3/android/firebase_core.iml" />
+      <module fileurl="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-5.0.2/android/firebase_messaging.iml" filepath="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-5.0.2/android/firebase_messaging.iml" />
+      <module fileurl="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.5.0+1/android/path_provider.iml" filepath="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.5.0+1/android/path_provider.iml" />
+      <module fileurl="file://$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.1.5/android/sqflite.iml" filepath="$USER_HOME$/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.1.5/android/sqflite.iml" />
+    </modules>
+  </component>
+</project>

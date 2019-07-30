@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Eduardo Kupka",
+    "isActive": false,
+    "picture": "http://placehold.it/32x32",
+    "age": 24,
+    "eyeColor": "brown",
+    "gender": "male",
+    "position": "Developer",
+    "company": "Summit Hub",
+    "companyID": "5cd02a3328b619aec0515a61",
+    "email": "eduardo@gramadosummit.com",
+    "phone": "+55 (54) 981060-0999",
+    "address": "Rua Jurgens Hubbe, 33",
+    "about": "Enim minim ex exercitation do reprehenderit minim veniam Lorem. Ex pariatur duis velit irure aliquip sunt eu reprehenderit ex ullamco. Qui veniam laborum veniam irure. Dolore culpa qui do ad. Adipisicing laborum mollit aliqua aute nisi consequat aliqua laborum nisi ex anim nostrud voluptate aliqua.\r\n",
+    "registered": "2019-02-07T09:58:55 +02:00",
+    "tags": [
+      "Programação",
+      "Código",
+      "Software",
+      "Desenvolvimento",
+      "Hardware"
+    ]
+  }
+]

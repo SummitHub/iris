@@ -1,0 +1,30 @@
+[
+    {
+      "name": "Pietro Rutzen",
+      "isActive": false,
+      "picture": "http://placehold.it/32x32",
+      "age": 21,
+      "eyeColor": "brown",
+      "gender": "male",
+      "position": "Head of Tech",
+      "lectures": [],
+      "meetings": [],
+      "invitations": [], 
+      "company": "Summit Hub",
+      "companyID": "5cd02a3328b619aec0515a61",
+      "email": "pietro@gramadosummit.com",
+      "phone": "+1 (953) 424-3195",
+      "address": "762 Post Court, Ernstville, California, 6546",
+      "about": "Quis sunt eu ad id officia irure voluptate consequat reprehenderit ad magna. Minim Lorem culpa ad consequat esse occaecat deserunt occaecat. Minim non exercitation culpa quis anim duis laboris aute elit enim amet nulla.\r\n",
+      "registered": "2017-04-05T01:09:47 +03:00",
+      "tags": [
+        "anim",
+        "cupidatat",
+        "officia",
+        "voluptate",
+        "non",
+        "ipsum",
+        "reprehenderit"
+      ]
+    }
+  ]

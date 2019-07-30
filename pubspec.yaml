@@ -1,0 +1,70 @@
+name: iris_flutter
+description: A new Flutter project.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.2.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  firebase_auth: ^0.11.1+6
+  cloud_firestore: 
+  http: ^0.12.0
+  date_format: any
+  basic_utils: ^1.0.8
+  cached_network_image: ^1.1.0
+  collection: ^1.14.11
+  provider: ^2.0.1
+  algolia: ^0.1.6+1
+  firebase_messaging: ^5.0.2
+  firebase_core: ^0.4.0+3
+  qr_code_scanner: ^0.0.11
+  firebase_storage: ^3.0.2
+  image_picker: ^0.6.0+10
+  font_awesome_flutter: ^8.4.0
+  cupertino_icons: ^0.1.2
+  photo_view: ^0.4.2
+  flutter_svg: ^0.13.1
+  flare_flutter: ^1.5.4
+  flutter_masked_text: ^0.8.0
+  autocomplete_textfield: ^1.7.3
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Druk
+      fonts:
+        - asset: assets/fonts/Druk-Bold.otf
+        - asset: assets/fonts/Druk-Bold-Italic.otf
+          style: italic
+    - family: Circular
+      fonts:
+        - asset: assets/fonts/CircularStd-Medium.otf
+        - asset: assets/fonts/CircularStd-MediumItalic.otf
+          style: italic 
+        - asset: assets/fonts/CircularStd-Book.otf
+          weight: 300
+        - asset: assets/fonts/CircularStd-BookItalic.otf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/CircularStd-Bold.otf
+          weight: 700
+        - asset: assets/fonts/CircularStd-BoldItalic.otf
+          weight: 700
+          style: italic 
+        - asset: assets/fonts/CircularStd-Black.otf
+          weight: 800
+        - asset: assets/fonts/CircularStd-BlackItalic.otf
+          weight: 800
+          style: italic
+
+  uses-material-design: true

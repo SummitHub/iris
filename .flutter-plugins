@@ -1,0 +1,9 @@
+cloud_firestore=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore-0.12.5/
+firebase_auth=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth-0.11.1+6/
+firebase_core=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.0+3/
+firebase_messaging=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging-5.0.2/
+firebase_storage=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_storage-3.0.2/
+image_picker=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.0+10/
+path_provider=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-0.5.0+1/
+qr_code_scanner=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/qr_code_scanner-0.0.11/
+sqflite=/home/rutzen/flutter/.pub-cache/hosted/pub.dartlang.org/sqflite-1.1.5/

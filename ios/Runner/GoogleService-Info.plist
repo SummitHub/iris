@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>874055198199-s3sr5dovhss98asfissafuu.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>apps.googleusercontent.com874055198199-s3sr5dovhss98asfissafuu</string>
+	<key>API_KEY</key>
+	<string>FIREBASE_API_KEY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>56456456564</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.iris</string>
+	<key>PROJECT_ID</key>
+	<string>your-project-id-8789</string>
+	<key>STORAGE_BUCKET</key>
+	<string>your-project-id-8789.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>firebaseappid:8846546</string>
+	<key>DATABASE_URL</key>
+	<string>https://your-project-id-8789.firebaseio.com</string>
+</dict>
+</plist>
