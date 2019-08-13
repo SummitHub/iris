@@ -15,7 +15,7 @@ class SignInSelectorScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            titleAndSubtitle(),
+            titleAndSubtitle(context),
             SizedBox(height: 40,),
             buttons(context)
           ],
@@ -24,7 +24,7 @@ class SignInSelectorScreen extends StatelessWidget {
     );
   }
 
-  titleAndSubtitle(){
+  titleAndSubtitle(context){
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30,),
       child: Column(
@@ -35,16 +35,15 @@ class SignInSelectorScreen extends StatelessWidget {
               height: 25,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/whitearrow.png'),
-                  )
+                  color: Theme.of(context).primaryColor
+                  
                 )
               )
             ),
           ),
           SizedBox(height:10,),
-          Text('Bem vindo(a) à'.toUpperCase(), textAlign: TextAlign.center , style: TextStyle(fontFamily: 'Druk', color: Colors.white, fontSize: 36.5),),
-          Text('Gramado Summit'.toUpperCase(), textAlign: TextAlign.center , style: TextStyle(fontFamily: 'Druk', color: Colors.white, fontSize: 36.5),),
+          Text('Bem vindo(a) à'.toUpperCase(), textAlign: TextAlign.center , style: TextStyle(color: Colors.white, fontSize: 24),),
+          Text('Gramado Summit'.toUpperCase(), textAlign: TextAlign.center , style: TextStyle(color: Colors.white, fontSize: 24),),
 
         ],
       ),

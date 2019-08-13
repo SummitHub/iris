@@ -1,7 +1,6 @@
 import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/services/normalize.dart';
 import 'package:iris_flutter/services/search.dart';
 import 'package:iris_flutter/services/user.dart';
@@ -27,7 +26,7 @@ class SearchScreenWidget extends StatelessWidget {
       
             if (!snapshot.hasData) {
                 return Center(
-                    child: LoadingSpinner(false)
+                    child: CircularProgressIndicator()
                   );
               }
             if (snapshot.data.hits.length < 1) return noResultsMessage();

@@ -115,7 +115,6 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
       style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600, color: Color(0xFF8E8E93)),)
     ));
 
-  print('--- CREATE MEETING SCREEN - ID 1: ' + mainGuestID);
     return Container(
       child: Scaffold(
         backgroundColor: Color(0xFFF5F5F5),
@@ -129,20 +128,6 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
                     height: 75,
                     child: Stack(
                       children: <Widget>[
-                        Align(
-                          alignment: Alignment.bottomLeft,
-                          child: SizedBox(
-                            height: 56,
-                            width: 56,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/sideLines2.png'),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
                         Align(
                           alignment: Alignment.bottomLeft,
                           child: SizedBox(
@@ -173,11 +158,6 @@ class _CreateMeetingScreenState extends State<CreateMeetingScreen> {
                           child: Column(
                             children: <Widget>[
 
-/*                               Padding(
-                                padding: const EdgeInsets.only(top: 24.0),
-                                child: Text("Reunião com " + mainGuestName, style: TextStyle(fontSize: 19, fontWeight: FontWeight.w800, color: Theme.of(context).primaryColor),),
-                              ),
- */
                               Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 24.0),
                                 child: Text("Selecione o horário da reunião", style: TextStyle(fontSize: 17.3, fontWeight: FontWeight.w800),),

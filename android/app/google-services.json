@@ -1,42 +1,35 @@
 {
   "project_info": {
-    "project_number": "56456456564",
-    "firebase_url": "https://yourproject.firebaseio.com",
-    "project_id": "your-project-id-8789",
-    "storage_bucket": "yourproject.appspot.com"
+    "project_number": "765647459968",
+    "firebase_url": "https://openiris-168dd.firebaseio.com",
+    "project_id": "openiris-168dd",
+    "storage_bucket": "openiris-168dd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "firebaseappid:8846546",
+        "mobilesdk_app_id": "1:765647459968:android:9cf726e80289d8ab",
         "android_client_info": {
-          "package_name": "com.example.iris"
+          "package_name": "com.summithub.iris"
         }
       },
       "oauth_client": [
         {
-          "client_id": "874055198199-s3sr5dovhss98asfissafuu.apps.googleusercontent.com",
+          "client_id": "765647459968-ce4vad08l2sd99qgajb5cco49hcive1f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "FIREBASE_API_KEY"
+          "current_key": "AIzaSyBy-LwCl_drdvhAdhdUgDZy45H6-Esk2dI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "874055198199-s3sr5dovhss98asfissafuu.apps.googleusercontent.com",
+              "client_id": "765647459968-ce4vad08l2sd99qgajb5cco49hcive1f.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "874055198199-s3sr5dovhss98asfissafuu.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.iris"
-              }
             }
           ]
         }

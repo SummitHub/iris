@@ -19,11 +19,12 @@ class VisitCounterScreen extends StatefulWidget {
 class _VisitCounterScreenState extends State<VisitCounterScreen> {
 
   bool qrOpened = false;
+  bool fetching = false;
+  bool addinguser = false;
   String userId;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   var qrText;
   bool qrTriggered = false;
-  Map<String, dynamic> requestData;
   QRViewController controller;
   List<String> listOfIds = [];
 
@@ -31,6 +32,12 @@ class _VisitCounterScreenState extends State<VisitCounterScreen> {
   void didChangeDependencies() {
     userId = Provider.of<User>(context).id;
     print(userId.toString());    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -43,20 +50,6 @@ class _VisitCounterScreenState extends State<VisitCounterScreen> {
               height: 75,
               child: Stack(
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: SizedBox(
-                      height: 56,
-                      width: 56,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/sideLines2.png'),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                   Align(
                     alignment: Alignment.bottomLeft,
                     child: SizedBox(
@@ -108,8 +101,9 @@ class _VisitCounterScreenState extends State<VisitCounterScreen> {
                         children: snapshot.data.documents.map((DocumentSnapshot document) {
                           listOfIds.add(document.documentID.toString());
                           return new ListTile(
-                            title: new Text(document['name']),
-                            subtitle: new Text(document['email']),
+
+                            title: new Text(document['credencial']),
+                            //subtitle: new Text(document['email']),
                           );
                         }).toList(),
                       );
@@ -119,9 +113,17 @@ class _VisitCounterScreenState extends State<VisitCounterScreen> {
             ),
             qrOpened
             ? Container(height: normalizedWidth(context, 360), width: normalizedWidth(context, 360), 
-              child: QRView(
-              key: qrKey,
-              onQRViewCreated: _onQRViewCreated,
+              child: Stack(
+                children: <Widget>[
+                  QRView(
+                  key: qrKey,
+                  onQRViewCreated: _onQRViewCreated,
+                  ),
+                  fetching?
+                  Center(
+                    child: CircularProgressIndicator(),
+                  ):SizedBox()
+                ],
               )
             )
             : SizedBox(),
@@ -137,131 +139,157 @@ class _VisitCounterScreenState extends State<VisitCounterScreen> {
     );
   }
 
-    Future getSymplaTicket(String qrString) async {
-    if (qrString != "") {
-      print("LOADING");
-      Map<String, String> requestHeaders = {
-        's_token': 'aa73c849da4bf43501e8f7e742a5960b953eb30102f54a5c4a71788199b80030'
-      };
-      var data = await http.get('https://api.sympla.com.br/public/v3/events/402416/participants?ticket_num_qr_code='+qrString, headers: requestHeaders);
-      var jsonData = json.decode(data.body);
-      List results = jsonData['data'];
-      var participant = results.where((item) => item['ticket_num_qr_code'].startsWith(qrString));
+  Map<String, String> requestHeaders = {
+    's_token': 'aa73c849da4bf43501e8f7e742a5960b953eb30102f54a5c4a71788199b80030'
+  };
 
-      requestData = Map<String, dynamic>.from(participant.first);
-      addVisitant(requestData, qrString);
-      print("GOT IT");
+  getRequestTotalPages() async {
+      var data = await http.get('https://www.sympla.com.br/public/v3/events/402416/participants?page_size=200', headers: requestHeaders);
+      var jsonData = json.decode(data.body);
+      return jsonData['pagination']['total_page'];
+  }
+
+  getSymplaTicket(String qrString) async {
+    if (qrString != "") {
+      var participant;
+      await getRequestTotalPages().then((totalPages) async {
+        print("TOTAL DE PAGINAS: " + totalPages.toString());
+        for (int i = 0; i <= totalPages; i++) {
+          print("INDEX DO FOR "+ i.toString());
+          var pageData = await http.get('https://api.sympla.com.br/public/v3/events/402416/participants?page_size=200&page='+i.toString(), headers: requestHeaders);
+          var pageParticipants = json.decode(pageData.body);
+          print(pageParticipants['data']);
+          pageParticipants['data'].forEach((user) {
+            if (user['ticket_num_qr_code'] == qrString){ 
+              participant = user;
+              i = 99;
+            }
+          });
+        }
+      });
+      if (participant!=null){
+        return Map<String, dynamic>.from(participant);
+      }
     }
   }
 
-  _onQRViewCreated(QRViewController controller) {
-    print("INIT QR");
-    final channel = controller.channel;
-    controller.init(qrKey);
+
+    void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    channel.setMethodCallHandler((MethodCall call) async {
-      switch (call.method) {
-        case "onRecognizeQR":
-          print("PISCA");
-          dynamic arguments = call.arguments;
-          print("LIST OF IDS: " + listOfIds.toString());
-          if (!listOfIds.contains(arguments.toString())) await getSymplaTicket( arguments.toString());
-      }
+    controller.scannedDataStream.listen((scanData) {
+        qrText = scanData;
+          if (!addinguser){
+            addinguser = true;
+            addVisitant(qrText);
+          }
     });
   }
 
-  Future addVisitant(Map<String, dynamic> requestData, String qrText) async {
+
+  Future addVisitant(String qrText) async {
     print("ADDING USER!!!");
-    Firestore.instance.collection('users').document(userId).collection('visitants').document(qrText)
-    .setData({
+    await Firestore.instance.collection('users').document(userId).collection('visitants').document(qrText).setData({'credencial' : qrText});
+    userAdded();
+  }
+
+  Future<void> userAdded(){
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Visitante Registrado'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                setState(() {
+                 addinguser =  false;
+                });
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future getWinner(String ticket) async {
+    Map<String, dynamic> requestData = await getSymplaTicket(ticket);
+    return {
       'name' : requestData['first_name'] + ' ' + requestData['last_name'],
       'email' : requestData['email'],
       'company': requestData['custom_form'][2]['value'],
       'phone' : requestData['custom_form'][0]['value'],
-    });
+    };
   }
 
   Future<void> raffleUser() async {
-    String name = '';
-    String email = '';
-    String phone = '';
 
     final _random = new Random();
-    String winnerId = listOfIds[_random.nextInt(listOfIds.length)]; 
-    Firestore.instance.collection('users').document(userId).collection('visitants').document(winnerId).get().then((doc){
-      if (doc.data['name']!=null || doc.data['email']!=null) {
-        name = doc.data['name'].toString();
-        email = doc.data['email'].toString();
-        phone = doc.data['phone'].toString();
-      } else {
-        name = 'ERRO';
-        email = "ERRO";
-        phone = "ERRO";
-      }
+    String winnerTicket = listOfIds[_random.nextInt(listOfIds.length)]; 
 
-    });
-  return showDialog<void>(
-    context: context,
-    barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Sorteio!'),
-        content: SingleChildScrollView(
-          child: FutureBuilder<Object>(
-            future: Firestore.instance.collection('users').document(userId).collection('visitants').document(winnerId).get(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData)
-                return Center(child: CircularProgressIndicator(backgroundColor: Color(0xFFf55288),));
-              return ListBody(
-                children: <Widget>[
-
-            Text.rich(
-              TextSpan(
-                text: 'Winner: ',
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Sorteio!'),
+          content: SingleChildScrollView(
+            child: FutureBuilder(
+              future: getWinner(winnerTicket),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+                print("SNAPSHOT DATA: " + snapshot.data.toString());
                 
-                style: TextStyle(fontWeight: FontWeight.w800),
-                children: <TextSpan>[
-                  TextSpan(text: name ),
-                ],
-              ),
-              textAlign: TextAlign.start,
+                return ListBody(
+                  children: <Widget>[
+                    Text.rich(
+                      TextSpan(
+                        text: 'Winner: ',
+                        style: TextStyle(fontWeight: FontWeight.w800),
+                        children: <TextSpan>[
+                          TextSpan(text: snapshot.data['name'] ),
+                        ],
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                    SizedBox(height: 10,),
+                    Text.rich(
+                      TextSpan(
+                        text: 'Email: ',
+                        children: <TextSpan>[
+                          TextSpan(text: snapshot.data['email']),
+                        ],
+                      ),
+                      textAlign: TextAlign.start,
+                    ),            
+                    SizedBox(height: 10,),
+                    Text.rich(
+                      TextSpan(
+                        text: 'Phone: ',
+                        children: <TextSpan>[
+                          TextSpan(text: snapshot.data['phone']),
+                        ],
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ],
+                );
+              }
             ),
-            SizedBox(height: 10,),
-            Text.rich(
-              TextSpan(
-                text: 'Email: ',
-                children: <TextSpan>[
-                  TextSpan(text: email),
-                ],
-              ),
-              textAlign: TextAlign.start,
-            ),            
-            SizedBox(height: 10,),
-            Text.rich(
-              TextSpan(
-                text: 'Phone: ',
-                children: <TextSpan>[
-                  TextSpan(text: phone),
-                ],
-              ),
-              textAlign: TextAlign.start,
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
-
-                ],
-              );
-            }
-          ),
-        ),
-        actions: <Widget>[
-          FlatButton(
-            child: Text('OK'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
+          ],
+        );
+      },
+    );
+  }
 }

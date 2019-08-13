@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/models/appointments.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iris_flutter/services/normalize.dart';
@@ -82,20 +81,6 @@ class _MeetingScreenState extends State<MeetingScreen> {
             child: SizedBox(
               height: 56,
               width: 56,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/sideLines2.png'),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: SizedBox(
-              height: 56,
-              width: 56,
               child: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: BackButton(color: Colors.white,)
@@ -124,12 +109,12 @@ class _MeetingScreenState extends State<MeetingScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 0.0,),
             child: Text((widget.appointment.title.toString()).toUpperCase(), 
-              style: TextStyle(fontFamily: 'Druk', fontSize: 36, color: Theme.of(context).primaryColor)),
+              style: TextStyle(fontSize: 36, color: Theme.of(context).primaryColor)),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0.0),
             child: Text(widget.appointment.subtitle.toString().toUpperCase(), 
-              style: TextStyle(fontFamily: 'Druk', fontStyle: FontStyle.italic, fontSize: 8, color: Theme.of(context).primaryColor)),
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 8, color: Theme.of(context).primaryColor)),
           ),
         ],
       ),
@@ -210,7 +195,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        LoadingSpinner(false)
+                        CircularProgressIndicator()
                       ],
                     ),
                   );

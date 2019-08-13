@@ -5,8 +5,6 @@ import 'package:iris_flutter/services/MySchedule.dart';
 import 'package:iris_flutter/services/user.dart';
 import 'package:provider/provider.dart';
 import 'package:iris_flutter/components/myScheduleWidgets.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
-
 
 class MyScheduleScreen extends StatefulWidget {
   MyScheduleScreen(this._tabController);
@@ -74,7 +72,7 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
     } 
   }
 
-  @override
+ @override
   Widget build(BuildContext context) {
     print(getCurrentDay(currentPage));
     return Scaffold(
@@ -87,17 +85,16 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
               color: Color(0xFFF2F2F2),
               child: Consumer<MySchedule>(
                 builder: (BuildContext context, mySchedule, Widget child) {
-                  return PageView(
+                  return PageView.builder(
                     controller: _pageController,
                     physics: AlwaysScrollableScrollPhysics(),
                     onPageChanged: (index) {
                       pageChanged(index);
-                    }, 
-                    children: <Widget>[
-                      dayStream1(context),
-                      dayStream2(context),                          
-                      dayStream3(context),                          
-                    ],
+                    },
+                    itemCount: 3,
+                    itemBuilder: (context, position){
+                      return dayStream(context, position); 
+                    },
                   );
                 }
               ),
@@ -107,44 +104,14 @@ class _MyScheduleScreenState extends State<MyScheduleScreen> {
       )
     );
   }
-
-  dayStream1(BuildContext context) {
+  
+  dayStream(BuildContext context, int position) {
     var user = Provider.of<User>(context);
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('users').document(user.id).collection('schedule').orderBy('startTime').where('startDate', isEqualTo: '2019-07-31').snapshots(),
+      stream: Firestore.instance.collection('users').document(user.id).collection('schedule').orderBy('startTime').where('startDate', isEqualTo: getCurrentDay(position)).snapshots(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData){
-          return Center(child: LoadingSpinner(false),);
-        }
-        return ListView(
-          children: appointmentList(snapshot, context, _pageController, _tabController),
-        );
-      }
-    );
-  }
-
-  dayStream2(BuildContext context) {
-    var user = Provider.of<User>(context);
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('users').document(user.id).collection('schedule').orderBy('startTime').where('startDate', isEqualTo: '2019-08-01').snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData){
-          return Center(child: LoadingSpinner(false),);
-        }
-        return ListView(
-          children: appointmentList(snapshot, context, _pageController, _tabController),
-        );
-      }
-    );
-  }
-
-  dayStream3(BuildContext context) {
-    var user = Provider.of<User>(context);
-    return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('users').document(user.id).collection('schedule').orderBy('startTime').where('startDate', isEqualTo: '2019-08-02').snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData){
-          return Center(child: LoadingSpinner(false),);
+          return Center(child: CircularProgressIndicator(),);
         }
         return ListView(
           children: appointmentList(snapshot, context, _pageController, _tabController),

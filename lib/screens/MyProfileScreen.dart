@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/components/tagBox.dart';
 import 'package:iris_flutter/screens/VisitCounterScreen.dart';
 import 'package:iris_flutter/screens/ProfilePictureScreen.dart';
@@ -51,7 +50,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    LoadingSpinner(false)
+                    CircularProgressIndicator()
                   ],
                 ),
               );
@@ -115,20 +114,6 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
           height: 120,
           width: MediaQuery.of(context).size.width,
           color: Theme.of(context).secondaryHeaderColor,
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: SizedBox(
-              height: 67,
-              width: 67,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/sideLines2.png'),
-                  ),
-                ),
-              ),
-            ),
-          ),
         ),
         Align(
             alignment: Alignment.topRight,
@@ -200,7 +185,7 @@ tagsSection(BuildContext context){
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                LoadingSpinner(false)
+                CircularProgressIndicator()
               ],
             ),
           );
@@ -417,28 +402,28 @@ tagsSection(BuildContext context){
   }
   
   Future<void> _logOutAlert() async {
-  return showDialog<void>(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Deseja sair de sua conta?'),
-        actions: <Widget>[
-          FlatButton(
-            child: Text('Cancelar', style: TextStyle(color: Color(0xFF989898))),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          FlatButton(
-            child: Text('Sair', style: TextStyle(color: Theme.of(context).primaryColor)),
-            onPressed: () {
-              Navigator.of(context).pop();
-              Provider.of<User>(context).signOut();
-            },
-          ),
-        ],
-      );
-    },
-  );
-}
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Deseja sair de sua conta?'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('Cancelar', style: TextStyle(color: Color(0xFF989898))),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            FlatButton(
+              child: Text('Sair', style: TextStyle(color: Theme.of(context).primaryColor)),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Provider.of<User>(context).signOut();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 }

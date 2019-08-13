@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/models/message.dart';
 import 'package:iris_flutter/screens/SignInSelectorScreen.dart';
 import 'package:iris_flutter/services/user.dart';
@@ -35,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
     };
 
   navigateToChatScreen(message, context) {
-      return Navigator.of(context, rootNavigator: true).pushReplacement(
+      return Navigator.of(context, rootNavigator: true).push(
         MaterialPageRoute(
           builder: (context) {
             var user = Provider.of<User>(context);
@@ -46,9 +45,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   navigateToScheduleScreen(context) {
-    setState(() {
-      _tabController.index =  3;
-    });
+      setState(() {
+       _tabController.index =  3;
+      });
   }
 
   @override
@@ -157,9 +156,9 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (context, user, _) {
         print("currentStatus: " + user.status.toString());
         switch (user.status) {
-          case Status.Uninitialized: return Scaffold(backgroundColor: Colors.white,body: Center(child: LoadingSpinner(false),),);
+          case Status.Uninitialized: return Scaffold(backgroundColor: Colors.white,body: Center(child: CircularProgressIndicator(),),);
           case Status.Unauthenticated: return SignInSelectorScreen();
-          case Status.Authenticating: return Scaffold(backgroundColor: Colors.white,body: Center(child: LoadingSpinner(false),),);
+          case Status.Authenticating: return Scaffold(backgroundColor: Colors.white,body: Center(child: CircularProgressIndicator(),),);
           case Status.Authenticated: return bottomBar(); 
         }
          return null;
@@ -272,9 +271,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                     height: 25,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/whitearrow.png'),
-                        )
+                    color: Theme.of(context).primaryColor
                       )
                     )
                   )
@@ -297,7 +294,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
                     decoration: InputDecoration(
                       
                       contentPadding: EdgeInsets.only(top: 0, right: 35, bottom: 3),
-                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xB4FF3E88), width: 2)),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2)),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2)),
                       labelText: "Pesquise pessoas por nome, empresa, cargo ou tags",
                       hasFloatingPlaceholder: false,
@@ -336,7 +333,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("Mapa do Evento", style: TextStyle(fontSize: 17, fontFamily: 'Circular', fontWeight: FontWeight.w900)),
+                  Text("Mapa do Evento", style: TextStyle(fontSize: 17, fontWeight: FontWeight.w900)),
                 ],
               )
             ),
@@ -346,7 +343,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text("A Seguir", style: TextStyle(fontSize: 17, fontFamily: 'Circular', fontWeight: FontWeight.w900)),
+                  Text("A Seguir", style: TextStyle(fontSize: 17, fontWeight: FontWeight.w900)),
                 ],
               )
             ),

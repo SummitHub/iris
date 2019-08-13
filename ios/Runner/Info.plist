@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Gramado Summit</string>
+	<string>Iris</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -25,7 +25,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.example.iris</string>
+				<string>com.summithub.iris</string>
 			</array>
 		</dict>
 		<dict>
@@ -33,7 +33,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.874010198199-etc12sisspfkjid233</string>
+				<string>com.googleusercontent.apps.765647459968-ufeumc8rbhd1r75d9nel3lsmuabvlrmu</string>
 			</array>
 		</dict>
 	</array>

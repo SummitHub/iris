@@ -82,7 +82,7 @@ String searchTextField = '';
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            CircularProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                            CircularProgressIndicator(),
                           ],
                         ),
                       );

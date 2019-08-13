@@ -27,5 +27,5 @@
     ]
   },
   "static_framework": true,
-  "prepare_command": "echo // Generated file, do not edit > Classes/UserAgent.h\necho \"#define LIBRARY_VERSION @\\\"3.0.2\\\"\" >> Classes/UserAgent.h\necho \"#define LIBRARY_NAME @\\\"flutter-fire-gcs\\\"\" >> Classes/UserAgent.h"
+  "prepare_command": "echo // Generated file, do not edit > Classes/UserAgent.h\necho \"#define LIBRARY_VERSION @\\\"3.0.5\\\"\" >> Classes/UserAgent.h\necho \"#define LIBRARY_NAME @\\\"flutter-fire-gcs\\\"\" >> Classes/UserAgent.h"
 }

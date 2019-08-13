@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iris_flutter/services/normalize.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -61,7 +60,7 @@ class _ProfilePictureScreenState extends State<ProfilePictureScreen> {
               maxScale: PhotoViewComputedScale.contained*3,
               imageProvider: CachedNetworkImageProvider(widget.image),
             )
-            : Center(child: LoadingSpinner(false))
+            : Center(child: CircularProgressIndicator())
           ),
           Container(
             height: MediaQuery.of(context).size.height,

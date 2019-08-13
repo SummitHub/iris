@@ -117,11 +117,12 @@ WriteBatch Firestore::GetBatch() {
   return WriteBatch(shared_from_this());
 }
 
-FIRQuery* Firestore::GetCollectionGroup(NSString* collection_id) {
+FIRQuery* Firestore::GetCollectionGroup(std::string collection_id) {
   EnsureClientConfigured();
 
   FSTQuery* query = [FSTQuery queryWithPath:ResourcePath::Empty()
-                            collectionGroup:collection_id];
+                            collectionGroup:std::make_shared<const std::string>(
+                                                std::move(collection_id))];
   return [[FIRQuery alloc] initWithQuery:query firestore:shared_from_this()];
 }
 
@@ -154,7 +155,7 @@ void Firestore::ClearPersistence(util::StatusCallback callback) {
       std::lock_guard<std::mutex> lock{mutex_};
       if (client_ && !client().isShutdown) {
         Yield(util::Status(
-            FirestoreErrorCode::FailedPrecondition,
+            Error::FailedPrecondition,
             "Persistence cannot be cleared while the client is running."));
         return;
       }

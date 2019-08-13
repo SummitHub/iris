@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/screens/SignupScreen.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:http/http.dart' as http;
@@ -25,7 +24,6 @@ class _QrScreenState extends State<QrScreen> {
   Map<String, dynamic> requestData;
   FocusNode _textFocusNode = FocusNode();
   TextEditingController _textController = TextEditingController();
-
   QRViewController controller;
 
   @override
@@ -50,6 +48,7 @@ class _QrScreenState extends State<QrScreen> {
     super.dispose();
     _textController.dispose();
     _textFocusNode.dispose();
+    controller?.dispose();
   }
 
   @override
@@ -79,7 +78,7 @@ class _QrScreenState extends State<QrScreen> {
                       ),
                       onPressed: () => _textFocusNode.unfocus(),
                     )
-                    :LoadingSpinner(true),
+                    :CircularProgressIndicator(),
                   )
                 ),
               ),
@@ -132,7 +131,7 @@ class _QrScreenState extends State<QrScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    LoadingSpinner(false),
+                    CircularProgressIndicator(),
                     SizedBox(height: 20,),
                     Text("Buscando suas informações"),
                     Text("Aguarde...")
@@ -193,24 +192,18 @@ class _QrScreenState extends State<QrScreen> {
     }
   }
 
-  _onQRViewCreated(QRViewController controller) {
-    final channel = controller.channel;
-    controller.init(qrKey);
+  void _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    channel.setMethodCallHandler((MethodCall call) async {
-      switch (call.method) {
-        case "onRecognizeQR":
-          dynamic arguments = call.arguments;
-          setState(() {
-            qrText = arguments.toString();
-          });
-          if (!fetching) {
-          setState(() {
-            fetching = true;
-          });
-            await getSymplaTicket(qrText);
-          }
+    controller.scannedDataStream.listen((scanData) {
+        qrText = scanData;
+        if (!fetching) {
+        setState(() {
+          fetching = true;
+        });
+          getSymplaTicket(qrText);
         }
     });
   }
+
+
 }

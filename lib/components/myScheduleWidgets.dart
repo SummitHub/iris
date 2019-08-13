@@ -58,13 +58,13 @@ prettyDayByPage(BuildContext context, currentPage){
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(6.0),
-            child: Text(mday, style: TextStyle(fontSize: 46, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,)),
+            child: Text(mday, style: TextStyle(fontSize: 46, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,)),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(month.toUpperCase(), style: TextStyle(fontSize: 17.3, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700, height: 0.8)),
-              Text(wday.toUpperCase(), style: TextStyle(fontSize: 24, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,height: 0.8)),
+              Text(month.toUpperCase(), style: TextStyle(fontSize: 17.3, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700, height: 0.8)),
+              Text(wday.toUpperCase(), style: TextStyle(fontSize: 24, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,height: 0.8)),
             ],
           )
         ],
@@ -79,20 +79,6 @@ Widget headerSchedule(currentPage, PageController pageController) {
           height: 75,
           child: Stack(
             children: <Widget>[
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: SizedBox(
-                  height: 56,
-                  width: 56,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/sideLines2.png'),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
@@ -269,13 +255,13 @@ getAppointmentType(String typeString) {
 }
 
 noAppointmentMessage(BuildContext context, CupertinoTabController _tabController){
-  return <Widget>[Container(height: 100,
+  return <Widget>[Container(height: 110,
     child: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text('NADA NESSE DIA, BORA MARCAR!', 
-            style: TextStyle(fontFamily: 'Druk', fontSize: 26, color: Theme.of(context).primaryColor)),
+            style: TextStyle(fontSize: 22, color: Theme.of(context).primaryColor)),
           IconButton(
             icon: Icon(Icons.add_circle), color: Theme.of(context).primaryColor,
             onPressed: () => _tabController.index = 1,

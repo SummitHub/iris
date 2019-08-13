@@ -32,7 +32,7 @@ listMessages(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context, userID
 Widget messageContainer(String content, String senderID, String userID, Timestamp time, bool hasTriangle){
   DateTime date = time.toDate();
   bool ownMessage = (senderID == userID);
-  Color color =  ownMessage ? Color(0xFF1EAAF4) : Colors.white;
+  Color color =  ownMessage ?   Color(0xFF8E8E8E) : Colors.white;
   return Stack(
     children: <Widget>[
       if (hasTriangle) 
@@ -150,7 +150,7 @@ class BaloonTriangle extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint();
-    paint.color = ownMessage ? Color(0xFF1EAAF4) : Colors.white;
+    paint.color = ownMessage ?  Color(0xFF8E8E8E) : Colors.white;
     var path = Path();
     ownMessage ? {
       path.lineTo(0.7*(size.width), 0),

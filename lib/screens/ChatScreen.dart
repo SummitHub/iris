@@ -81,14 +81,6 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      right: BorderSide(
-                        width: 1,
-                        color: Theme.of(context).primaryColor
-                      )
-                    )
-                  ),
                   height: 35, 
                   width: 35,
                   child: CachedNetworkImage(
@@ -104,7 +96,7 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(_otherUserName, style: TextStyle(fontSize: 16.5, fontWeight: FontWeight.w800)),
-                    Text(_otherUserPosition, style: TextStyle(fontSize: 10.5, fontWeight: FontWeight.w300, color: Color(0xFFACACAC)))
+                    Text(_otherUserPosition, style: TextStyle(fontSize: 10.5, fontWeight: FontWeight.w300))
                   ],
                 ),
               ),

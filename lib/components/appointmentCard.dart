@@ -45,8 +45,8 @@ class _AppointmentCardState extends State<AppointmentCard> {
               break;
           }
         cardText = [
-          Text(appointment.title.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
-          Text(appointment.subtitle.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
+          Text(appointment.title.toUpperCase(), style: TextStyle(color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
+          Text(appointment.subtitle.toUpperCase(), style: TextStyle(color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
         ];
         dismissedText = "Palestra removida da agenda";
         break;
@@ -56,16 +56,16 @@ class _AppointmentCardState extends State<AppointmentCard> {
           fColor = Theme.of(context).secondaryHeaderColor;
           dismissedText = "Convite para reunião recusado";
           cardText = [
-            Text(appointment.title.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
-            Text(appointment.location.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
+            Text(appointment.title.toUpperCase(), style: TextStyle(color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
+            Text(appointment.location.toUpperCase(), style: TextStyle(color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
           ];
         } else {
           bgcolor = Theme.of(context).secondaryHeaderColor;
           fColor = Colors.white;
           dismissedText = "Reunião removida da agenda";
           cardText = [
-            Text(appointment.title.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
-            Text(appointment.location.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
+            Text(appointment.title.toUpperCase(), style: TextStyle(color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
+            Text(appointment.location.toUpperCase(), style: TextStyle(color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
           ];
         }
         break;
@@ -74,8 +74,8 @@ class _AppointmentCardState extends State<AppointmentCard> {
       fColor = Theme.of(context).secondaryHeaderColor;
       dismissedText = "Convite para reunião recusado";
       cardText = [
-          Text(appointment.title.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
-          Text(appointment.location.toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
+          Text(appointment.title.toUpperCase(), style: TextStyle(color: fColor, fontSize: 21.1, fontWeight: FontWeight.w800)),
+          Text(appointment.location.toUpperCase(), style: TextStyle(color: fColor, fontSize: 6.72, fontWeight: FontWeight.w800, fontStyle: FontStyle.italic, height: 1.2)),
         ];
       break;
     }

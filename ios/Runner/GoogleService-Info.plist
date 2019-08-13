@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>874055198199-s3sr5dovhss98asfissafuu.apps.googleusercontent.com</string>
+	<string>765647459968-ufeumc8rbhd1r75d9nel3lsmuabvlrmu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>apps.googleusercontent.com874055198199-s3sr5dovhss98asfissafuu</string>
+	<string>com.googleusercontent.apps.765647459968-ufeumc8rbhd1r75d9nel3lsmuabvlrmu</string>
 	<key>API_KEY</key>
-	<string>FIREBASE_API_KEY</string>
+	<string>AIzaSyB4MbO3q186MonMt33nOh2q3bnDH7tzKDo</string>
 	<key>GCM_SENDER_ID</key>
-	<string>56456456564</string>
+	<string>765647459968</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.iris</string>
+	<string>com.summithub.iris</string>
 	<key>PROJECT_ID</key>
-	<string>your-project-id-8789</string>
+	<string>openiris-168dd</string>
 	<key>STORAGE_BUCKET</key>
-	<string>your-project-id-8789.appspot.com</string>
+	<string>openiris-168dd.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>firebaseappid:8846546</string>
+	<string>1:765647459968:ios:9cf726e80289d8ab</string>
 	<key>DATABASE_URL</key>
-	<string>https://your-project-id-8789.firebaseio.com</string>
+	<string>https://openiris-168dd.firebaseio.com</string>
 </dict>
 </plist>

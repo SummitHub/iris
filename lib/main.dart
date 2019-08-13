@@ -28,10 +28,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Gramado Summit',
         theme: ThemeData(
-          primaryColor: Color(0xFFFF3E88),
-          secondaryHeaderColor: Color(0xFF000BC0),
+          primaryColor: Color(0xFF8E8E8E),
+          secondaryHeaderColor: Color(0xFFB4B4B4),
           scaffoldBackgroundColor: Color(0xFFF2F2F2),//Color(0xFFF5F5F5),
-          fontFamily: 'Circular'
           ),
         home: HomeScreen(),
       ),

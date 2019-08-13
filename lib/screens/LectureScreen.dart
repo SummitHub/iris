@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/components/tagBox.dart';
 import 'package:iris_flutter/services/MySchedule.dart';
 import 'package:iris_flutter/models/lecture.dart';
@@ -104,7 +103,7 @@ class _LectureScreenState extends State<LectureScreen> {
                 width: MediaQuery.of(context).size.width,
                 height: 122.5,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                placeholder: (context, url) => LinearProgressIndicator(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
@@ -115,7 +114,7 @@ class _LectureScreenState extends State<LectureScreen> {
                 width: MediaQuery.of(context).size.width,
                 height: 122.5,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                placeholder: (context, url) => LinearProgressIndicator(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
             ),
           ),
@@ -137,7 +136,7 @@ class _LectureScreenState extends State<LectureScreen> {
                       width: (0.5)*MediaQuery.of(context).size.width,
                       height: 122.5,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      placeholder: (context, url) => LinearProgressIndicator(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -152,7 +151,7 @@ class _LectureScreenState extends State<LectureScreen> {
                       width: (0.5)*MediaQuery.of(context).size.width,
                       height: 122.5,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      placeholder: (context, url) => LinearProgressIndicator(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -172,7 +171,7 @@ class _LectureScreenState extends State<LectureScreen> {
                       width: MediaQuery.of(context).size.width,
                       height: 122.5,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      placeholder: (context, url) => LinearProgressIndicator(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -197,7 +196,7 @@ class _LectureScreenState extends State<LectureScreen> {
                       width: (0.5)*MediaQuery.of(context).size.width,
                       height: 122.5,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      placeholder: (context, url) => LinearProgressIndicator(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -212,7 +211,7 @@ class _LectureScreenState extends State<LectureScreen> {
                       width: (0.5)*MediaQuery.of(context).size.width,
                       height: 122.5,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      placeholder: (context, url) => LinearProgressIndicator(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -232,7 +231,7 @@ class _LectureScreenState extends State<LectureScreen> {
                       width: (0.5)*MediaQuery.of(context).size.width,
                       height: 122.5,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      placeholder: (context, url) => LinearProgressIndicator(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -247,7 +246,7 @@ class _LectureScreenState extends State<LectureScreen> {
                       width: (0.5)*MediaQuery.of(context).size.width,
                       height: 122.5,
                       fit: BoxFit.cover,
-                      placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      placeholder: (context, url) => LinearProgressIndicator(),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
@@ -275,14 +274,14 @@ class _LectureScreenState extends State<LectureScreen> {
           Padding(
             padding: const EdgeInsets.only(top: 0.0,),
             child: Text(widget.lecture.title.toString().toUpperCase(), 
-              style: TextStyle(fontFamily: 'Druk', fontSize: 36, color: Theme.of(context).primaryColor)),
+              style: TextStyle(fontSize: 36, color: Theme.of(context).primaryColor)),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 0.0),
             child: Text((widget.lecture.speakers.length > 1) 
             ? allNames().toUpperCase()
             : (widget.lecture.speakers[0]['title'].toString() + ' - ' + widget.lecture.speakers[0]['position'] + "/" + widget.lecture.speakers[0]['company']), 
-              style: TextStyle(fontFamily: 'Druk', fontStyle: FontStyle.italic, fontSize: 8, color: Theme.of(context).primaryColor)),
+              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 8, color: Theme.of(context).primaryColor)),
           ),
         ],
       ),
@@ -437,7 +436,7 @@ class _LectureScreenState extends State<LectureScreen> {
       padding: const EdgeInsets.only(bottom: 15.0),
       child: Align(
         alignment: Alignment.bottomCenter,
-        child: Container(height: 70, child: LoadingSpinner(false)),
+        child: Container(height: 70, child: CircularProgressIndicator()),
       ),
     );
   }

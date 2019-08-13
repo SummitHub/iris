@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/screens/HomeScreen.dart';
 import 'package:iris_flutter/services/user.dart';
 import 'package:provider/provider.dart';
@@ -114,20 +113,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: SizedBox(
                     height: 56,
                     width: 56,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/sideLines2.png'),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: SizedBox(
-                    height: 56,
-                    width: 56,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 10.0),
                       child: BackButton(color: Colors.white,)
@@ -143,9 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 25,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/whitearrow.png'),
-                          )
+                          color: Theme.of(context).primaryColor
                         )
                       )
                     )
@@ -185,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Text("Bem-vindo ao maior brainstorming do brasil".toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: Colors.white, fontSize: 36.5, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+                    child: Text("Bem-vindo ao maior brainstorming do brasil".toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 36.5, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -281,7 +264,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Text("Confirme o seu CPF".toUpperCase(), style: TextStyle(fontFamily: 'Druk', color: Colors.white, fontSize: 36.5, fontWeight: FontWeight.bold), textAlign: TextAlign.center,)
+                    child: Text("Confirme o seu CPF".toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 36.5, fontWeight: FontWeight.bold), textAlign: TextAlign.center,)
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -326,7 +309,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ? SizedBox(
                 width: (296/360)*MediaQuery.of(context).size.width,
                 height: 65,
-                child: LoadingSpinner(true)
+                child: CircularProgressIndicator()
               )
               : FlatButton(
                 onPressed: () {

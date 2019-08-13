@@ -33,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    CircularProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                    CircularProgressIndicator(),
                   ],
                 ),
               );
@@ -79,21 +79,7 @@ class ProfileScreen extends StatelessWidget {
         Container(
           height: 120,
           width: MediaQuery.of(context).size.width,
-          color: Theme.of(context).secondaryHeaderColor,
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: SizedBox(
-              height: 67,
-              width: 67,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/sideLines2.png'),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          color: Theme.of(context).secondaryHeaderColor
         ),
         Align(
           alignment: Alignment.topLeft,

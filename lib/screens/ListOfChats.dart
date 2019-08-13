@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
 import 'package:iris_flutter/screens/ChatScreen.dart';
 import 'package:iris_flutter/services/chat.dart';
 import 'package:iris_flutter/services/normalize.dart';
@@ -21,20 +20,6 @@ class ListOfChats extends StatelessWidget {
               height: 75,
               child: Stack(
                 children: <Widget>[
-                  Align(
-                    alignment: Alignment.bottomLeft,
-                    child: SizedBox(
-                      height: 56,
-                      width: 56,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/sideLines2.png'),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
@@ -75,7 +60,7 @@ class ChatWidget extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        LoadingSpinner(false)
+                        CircularProgressIndicator()
                       ],
                     ),
                   );
@@ -120,16 +105,8 @@ listUsers(AsyncSnapshot<QuerySnapshot> snapshot, BuildContext context){
                   children: <Widget>[
                     Container(
                       height: 90, 
-                      width: (91),
-                      decoration: BoxDecoration(
-                        border: Border(
-                          right: BorderSide(
-                            width: 1,
-                            color: Theme.of(context).primaryColor
-                          )
-                        )
-                      ),
-                      child: CachedNetworkImage(placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),), imageUrl: doc.data['involvedUsers'][0] == user.id ? guestImage: hostImage, fit: BoxFit.cover),
+                      width: 90,
+                      child: CachedNetworkImage(placeholder: (context, url) => LinearProgressIndicator(), imageUrl: doc.data['involvedUsers'][0] == user.id ? guestImage: hostImage, fit: BoxFit.cover),
                     ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 14, vertical: 15),

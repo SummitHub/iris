@@ -51,13 +51,13 @@ prettyDayByPage(BuildContext context, lectures, currentPage){
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(6.0),
-            child: Text(mday, style: TextStyle(fontSize: 46, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,)),
+            child: Text(mday, style: TextStyle(fontSize: 46, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,)),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(month.toUpperCase(), style: TextStyle(fontSize: 17.3, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700, height: 0.8)),
-              Text(wday.toUpperCase(), style: TextStyle(fontSize: 24, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,height: 0.8)),
+              Text(month.toUpperCase(), style: TextStyle(fontSize: 17.3, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700, height: 0.8)),
+              Text(wday.toUpperCase(), style: TextStyle(fontSize: 24, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,height: 0.8)),
             ],
           )
         ],
@@ -94,13 +94,13 @@ prettyDay(BuildContext context, lectures){
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(6.0),
-            child: Text(mday, style: TextStyle(fontSize: 46, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,)),
+            child: Text(mday, style: TextStyle(fontSize: 46, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,)),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(month.toUpperCase(), style: TextStyle(fontSize: 17.3, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700, height: 0.8)),
-              Text(wday.toUpperCase(), style: TextStyle(fontSize: 24, fontFamily: 'Druk', color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,height: 0.8)),
+              Text(month.toUpperCase(), style: TextStyle(fontSize: 17.3, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700, height: 0.8)),
+              Text(wday.toUpperCase(), style: TextStyle(fontSize: 24, color: Theme.of(context).primaryColor, fontWeight: FontWeight.w700,height: 0.8)),
             ],
           )
         ],
@@ -122,7 +122,7 @@ Widget firstDay(context) {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircularProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      CircularProgressIndicator(),
                     ],
                   ),
                 );
@@ -164,7 +164,7 @@ Widget secondDay(context) {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircularProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      CircularProgressIndicator(),
                     ],
                   ),
                 );
@@ -206,7 +206,7 @@ Widget thirdDay(context) {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CircularProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                      CircularProgressIndicator(),
                     ],
                   ),
                 );
@@ -240,22 +240,7 @@ Widget header(currentPage, PageController pageController) {
         SizedBox(
           height: 75,
           child: Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: SizedBox(
-                  height: 56,
-                  width: 56,
-                  child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/sideLines2.png'),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              
+            children: <Widget>[              
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
@@ -315,7 +300,7 @@ Widget header(currentPage, PageController pageController) {
             width: 280,
             height: 42,
             decoration: BoxDecoration(
-              border: Border.all(color: Color(0xFFE1EC49), width: 1)
+              border: Border.all(color:  Color(0xFF8E8E8E), width: 1)
             ),
             padding: EdgeInsets.symmetric(horizontal: 12.5),
             child: DropdownButtonHideUnderline(
@@ -327,7 +312,7 @@ Widget header(currentPage, PageController pageController) {
                     fontWeight: FontWeight.w700,
                     fontSize: 10.5
                   ),
-                  icon: Icon(FontAwesomeIcons.chevronDown, size: 12, color: Color(0xFFE1EC49)),
+                  icon: Icon(FontAwesomeIcons.chevronDown, size: 12, color:  Color(0xFF8E8E8E)),
                   value: lectures.dropdownValue,
                   onChanged: (String newValue) => newValue==lectures.dropdownValue ? null : lectures.filterByStage(newValue),
                   items: lectures.dropdownOptions.keys.toList()

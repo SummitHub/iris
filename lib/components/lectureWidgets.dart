@@ -24,7 +24,7 @@ Widget imagesReady(List images, context) {
             width: (300/360)*MediaQuery.of(context).size.width,
             height: 152.0,
             fit: BoxFit.cover,
-            placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+            placeholder: (context, url) => LinearProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),
         ),
       ),
@@ -41,7 +41,7 @@ Widget imagesReady(List images, context) {
               width: (300/360)*MediaQuery.of(context).size.width,
               height: 60.0,
               fit: BoxFit.cover,
-              placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+              placeholder: (context, url) => LinearProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
           ),
         ),
@@ -52,7 +52,7 @@ Widget imagesReady(List images, context) {
               width: (300/360)*MediaQuery.of(context).size.width,
               height: 60.0,
               fit: BoxFit.cover,
-              placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+              placeholder: (context, url) => LinearProgressIndicator(),
               errorWidget: (context, url, error) => Icon(Icons.error),
           ),
         ),
@@ -74,7 +74,7 @@ Widget imagesReady(List images, context) {
                     width: (0.147)*MediaQuery.of(context).size.width,
                     height: 60.0,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                    placeholder: (context, url) => LinearProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -89,7 +89,7 @@ Widget imagesReady(List images, context) {
                     width: (0.147)*MediaQuery.of(context).size.width,
                     height: 60.0,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                    placeholder: (context, url) => LinearProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -109,7 +109,7 @@ Widget imagesReady(List images, context) {
                     width: (106.5/360)*MediaQuery.of(context).size.width,
                     height: 60.0,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                    placeholder: (context, url) => LinearProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -134,7 +134,7 @@ Widget imagesReady(List images, context) {
                     width: (0.147)*MediaQuery.of(context).size.width,
                     height: 60.0,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                    placeholder: (context, url) => LinearProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -149,7 +149,7 @@ Widget imagesReady(List images, context) {
                     width: (0.147)*MediaQuery.of(context).size.width,
                     height: 60.0,
                     fit: BoxFit.cover,
-                    placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                    placeholder: (context, url) => LinearProgressIndicator(),
                     errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
               ),
@@ -169,7 +169,7 @@ Widget imagesReady(List images, context) {
                   width: (0.147)*MediaQuery.of(context).size.width,
                   height: 60.0,
                   fit: BoxFit.cover,
-                  placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                  placeholder: (context, url) => LinearProgressIndicator(),
                   errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
@@ -184,7 +184,7 @@ Widget imagesReady(List images, context) {
                   width: (0.147)*MediaQuery.of(context).size.width,
                   height: 60.0,
                   fit: BoxFit.cover,
-                  placeholder: (context, url) => LinearProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                  placeholder: (context, url) => LinearProgressIndicator(),
                   errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ),
@@ -205,12 +205,12 @@ Widget speakerCard(Lecture lecture, Widget imagesReady, context) {
       fontColor = Colors.white;
       break;
     case 'share': 
-      bgColor = Color(0xFF5D2F88);
+      bgColor = Theme.of(context).secondaryHeaderColor;
       fontColor = Color(0xFFFFFFFF);
       break;
     case 'comunidade': 
-      bgColor = Color(0xFF1EAAF4);
-      fontColor = Color(0xFFE1EC49);
+      bgColor = Color(0xFFD2D2D2);
+      fontColor = Theme.of(context).primaryColor;
       break;
     default:  
       bgColor = Color(0xFF000BC0);
@@ -242,14 +242,14 @@ Widget speakerCard(Lecture lecture, Widget imagesReady, context) {
                           padding: const EdgeInsets.only(top: 0.0,),
                           child: Text(
                             lecture.title.toString().toUpperCase(), maxLines: 3,
-                            style: TextStyle(fontFamily: 'Druk', fontSize: 21, color: fontColor, height: 0.85)),
+                            style: TextStyle(fontSize: 21, color: fontColor, height: 0.85)),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 0.0),
                           child: Text((lecture.speakers.length > 1) 
                             ? allNames(lecture).toUpperCase()
                             : (lecture.speakers[0]['title'].toString() + ' - ' + lecture.speakers[0]['position'] + "/" + lecture.speakers[0]['company']).toUpperCase(), 
-                            style: TextStyle(fontFamily: 'Druk', fontStyle: FontStyle.italic, fontSize: 6, color: fontColor, height: 1.4), 
+                            style: TextStyle(fontStyle: FontStyle.italic, fontSize: 6, color: fontColor, height: 1.4), 
                             maxLines: 2
                           ),
                         ),

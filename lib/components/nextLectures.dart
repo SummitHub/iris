@@ -82,6 +82,16 @@ List<Lecture> todaysLectures;
               }
               todaysLectures = lectures.groupedLectures[currentDay];
               todaysLectures.removeWhere((lec) =>  lec.startDateTime.isBefore(DateTime.now()));
+              if (todaysLectures.length < 1) {
+                if (currentDay == 2) return SizedBox(
+                  height: 248,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 10),
+                    child: Text("Próxima palestra dia 05/08/2020.\n Garanta o seu ingresso antecipado!", style: TextStyle(color: Theme.of(context).secondaryHeaderColor, fontSize: 18, fontWeight: FontWeight.w800), textAlign: TextAlign.center,),
+                  ),
+                );
+                else todaysLectures = (lectures.groupedLectures[currentDay+1]);
+              }
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 physics: NeverScrollableScrollPhysics(),

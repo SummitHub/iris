@@ -78,7 +78,7 @@ String ownId = '';
                     cursorWidth: 1.2,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.only(top: 0, bottom: 0),
-                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xB4FF3E88), width: 2)),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Theme.of(context).primaryColor, width: 2)),
                       labelText: "Pesquise aqui para convidar",
                       hasFloatingPlaceholder: false,
@@ -100,7 +100,7 @@ String ownId = '';
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                CircularProgressIndicator(backgroundColor: Color(0xFFf55288),),
+                                CircularProgressIndicator(),
                               ],
                             ),
                           );
@@ -145,9 +145,7 @@ String ownId = '';
                                             )
                                           ),
                                           child: CachedNetworkImage(
-                                            placeholder: (context, url) => LinearProgressIndicator(
-                                              backgroundColor: Color(0xFFf55288),
-                                            ), 
+                                            placeholder: (context, url) => LinearProgressIndicator(), 
                                             imageUrl: snapshot.data.hits[index].data['picture'].isNotEmpty ? snapshot.data.hits[index].data['picture'] : null, 
                                             fit: BoxFit.fitWidth
                                           ),

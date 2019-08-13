@@ -11,7 +11,7 @@ class Search with ChangeNotifier {
   );
 
   Future<AlgoliaQuerySnapshot> testAlgo(String searchText) async {
-    AlgoliaQuery query = algolia.instance.index('test_firestore').search(searchText);
+    AlgoliaQuery query = algolia.instance.index('participants').search(searchText);
     AlgoliaQuerySnapshot snap = await query.getObjects();
     //print(snap.toString());
     return snap;

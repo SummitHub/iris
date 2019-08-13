@@ -33,13 +33,13 @@ namespace util {
 NSError* MakeNSError(const int64_t error_code,
                      const absl::string_view error_msg,
                      NSError* cause) {
-  if (error_code == FirestoreErrorCode::Ok) {
+  if (error_code == Error::Ok) {
     return nil;
   }
 
   NSMutableDictionary<NSString*, id>* user_info =
       [NSMutableDictionary dictionary];
-  user_info[NSLocalizedDescriptionKey] = WrapNSString(error_msg);
+  user_info[NSLocalizedDescriptionKey] = MakeNSString(error_msg);
   if (cause) {
     user_info[NSUnderlyingErrorKey] = cause;
   }

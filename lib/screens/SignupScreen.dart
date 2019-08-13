@@ -11,8 +11,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:io';
 import 'package:iris_flutter/components/tagBox.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:iris_flutter/components/loadingSpinner.dart';
-
 
 class SignupScreen extends StatefulWidget {
   SignupScreen(this.participant);
@@ -456,7 +454,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       height: MediaQuery.of(context).size.width,
                       color: Colors.white,
                       child: Center(
-                        child: LoadingSpinner(false),
+                        child: CircularProgressIndicator(),
                       ),
                     )
                     :SizedBox(),                  
@@ -563,20 +561,6 @@ class _SignupScreenState extends State<SignupScreen> {
           height: 120,
           width: MediaQuery.of(context).size.width,
           color: Theme.of(context).secondaryHeaderColor,
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: SizedBox(
-              height: 67,
-              width: 67,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/sideLines2.png'),
-                  ),
-                ),
-              ),
-            ),
-          ),
         ),
         Padding(  
           padding: const EdgeInsets.only(top: 53),
@@ -612,7 +596,7 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                LoadingSpinner(false)
+                CircularProgressIndicator()
               ],
             ),
           );
@@ -721,7 +705,7 @@ class _SignupScreenState extends State<SignupScreen> {
               hintText: 'Escreva sobre você aqui.',
               fillColor: Color(0xFF707070),
               contentPadding: EdgeInsets.zero,
-              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Color(0xB4FF3E88), width: 2)),
+              enabledBorder: UnderlineInputBorder(borderSide: BorderSide(width: 2)),
               focusedBorder: UnderlineInputBorder( borderSide: BorderSide( width: 2, color: Theme.of(context).primaryColor)),
             ),
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 13.5, color: Color(0xFF101010), height: 1.2),
@@ -740,6 +724,7 @@ class _SignupScreenState extends State<SignupScreen> {
     if (text.length <= 1) return text.toUpperCase();
     var words = text.split(' ');
     var capitalized = words.map((word) {
+      print("WORD: " + word);
       var first = word.substring(0, 1).toUpperCase();
       var rest = word.substring(1);
       return '$first$rest';
