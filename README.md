@@ -1,16 +1,22 @@
-# iris_flutter
+# Iris
 
-A new Flutter project.
+Aplicativo para aprimorar a experiência de eventos (chat, agendamento, e vizualização de programação).
 
-## Getting Started
+## Começando
 
-This project is a starting point for a Flutter application.
+Este projeto é um ponto de início para um aplicativo que será compilado para Android e iOS usando Flutter, para isso é necessário ter todas as dependências instaladas.
 
-A few resources to get you started if this is your first Flutter project:
+- [Instalando o Flutter](https://flutter.dev/docs/get-started/install)
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+Mais informações podem ser consultadas nas [documentações](https://flutter.io/docs).
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## Para rodar o projeto inicial
+
+Na pasta do projeto (com um Android em Debug mode ou um iOS autorizado no XCode), rode os seguintes comandos:
+
+```
+flutter packages get
+flutter run
+```
+
+O aplicativo iniciará em Debug Mode e você pode começar a desenvolver.
